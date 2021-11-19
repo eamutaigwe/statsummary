@@ -10,7 +10,7 @@
 #' It is named x because it is more generally used and easy to identify.
 #' @param y A numeric variable for computing summary statistics.
 #' It is named y because it is more generally used and easy to identify.
-#' @param na.rm Gives the option to either remove or retain missing values.
+#' @param na.rm A logical value that gives the option to either remove or retain missing values.
 #' It is a generally used argument to specify whether or not to remove missing values.
 #'
 #' @return A list object with 2 items: a tibble or data frame and a ggplot object- boxplot.
