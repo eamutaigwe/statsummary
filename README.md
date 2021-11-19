@@ -26,8 +26,9 @@ task on a dataset which quickly computes summary statistics (mean,
 median, minimum, maximum, and count) on a numeric variable grouped by a
 categorical variable.
 
-It also produces a ggplot object- boxplot which visually presents all
-the summary statistics found in the summary table.
+It also produces a ggplot object- boxplot which visually presents some
+of the summary statistics found in the summary table generated such as
+median, minimum, maximum, and count.
 
 Below is a basic example which shows you how to use the function:
 
@@ -45,7 +46,6 @@ summarize_data(gapminder::gapminder, continent, lifeExp)
 #> 5 Oceania    74.3   73.7  69.1  81.2    24
 #> 
 #> [[2]]
-#> Warning: Removed 5 rows containing missing values (geom_segment).
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
