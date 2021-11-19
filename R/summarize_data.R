@@ -14,7 +14,7 @@
 #' It is a generally used argument to specify whether or not to remove missing values.
 #'
 #' @return A list object with 2 items: a tibble or data frame and a ggplot object- boxplot.
-#' @importFrom stats "median"
+#' @importFrom stats median
 #' @importFrom rlang .data
 #'
 #' @references Syntax suggested on StackOverflow by Gabra
