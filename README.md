@@ -21,7 +21,15 @@ devtools::install_github("eamutaigwe/statsummary")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Summarize_data() is a function that helps to carry out a fairly common
+task on a dataset which quickly computes summary statistics (mean,
+median, minimum, maximum, and count) on a numeric variable grouped by a
+categorical variable.
+
+It also produces a ggplot object- boxplot which visually presents all
+the summary statistics found in the summary table.
+
+Below is a basic example which shows you how to use the function:
 
 ``` r
 library(statsummary)
