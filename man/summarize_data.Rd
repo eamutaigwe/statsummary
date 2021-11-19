@@ -16,7 +16,7 @@ It is named x because it is more generally used and easy to identify.}
 \item{y}{A numeric variable for computing summary statistics.
 It is named y because it is more generally used and easy to identify.}
 
-\item{na.rm}{Gives the option to either remove or retain missing values.
+\item{na.rm}{A logical value that gives the option to either remove or retain missing values.
 It is a generally used argument to specify whether or not to remove missing values.}
 }
 \value{
