@@ -1,16 +1,19 @@
-#' Compute summary statistics, produce a tibble or data frame and a ggplot2 boxplot
+#' Compute summary statistics, produce a tibble or data frame and a ggplot object- boxplot
 #'
 #' This function computes summary statistics on a numeric variable
 #' grouped by a categorical variable. The summary statistics include
-#' mean, median, minimum, maximum, and count. It also
-#' produces a ggplot2 boxplot.
+#' mean, median, minimum, maximum, and count.
 #'
 #' @param df Tibble or data frame containing variables for computing summary statistics.
+#' Name is easily recognizable.
 #' @param x A categorical variable by which rows are grouped.
+#' It is named x because it is more generally used and easy to identify.
 #' @param y A numeric variable for computing summary statistics.
+#' It is named y because it is more generally used and easy to identify.
 #' @param na.rm Gives the option to either remove or retain missing values.
+#' It is a generally used argument to specify whether or not to remove missing values.
 #'
-#' @return A tibble or data frame containing summary statistics and a boxplot.
+#' @return A list object with 2 items: a tibble or data frame and a ggplot object- boxplot.
 #' @importFrom stats "median"
 #' @importFrom rlang .data
 #'
@@ -22,7 +25,7 @@
 #' summarize_data(gapminder::gapminder, continent, lifeExp)
 #' summarize_data(gapminder::gapminder, country, gdpPercap)
 #' @export
-#'
+
 summarize_data <- function(df, x, y, na.rm = TRUE) {
   val1 <- eval(substitute(x), df)
   val2 <- eval(substitute(y), df)
@@ -42,12 +45,13 @@ summarize_data <- function(df, x, y, na.rm = TRUE) {
 
   summary_df <- df2 %>%
     dplyr::summarise(mean = mean({{ y }}, na.rm = na.rm),
-              median = stats::median({{ y }}, na.rm = na.rm),
-              min = min({{ y }}, na.rm = na.rm),
-              max = max({{ y }}, na.rm = na.rm),
-              n = dplyr::n())
+                    median = stats::median({{ y }}, na.rm = na.rm),
+                    min = min({{ y }}, na.rm = na.rm),
+                    max = max({{ y }}, na.rm = na.rm),
+                    n = dplyr::n())
 
-  summary_plot <- df2 %>% ggplot2::ggplot(ggplot2::aes(.data$x_label, {{ y }})) +
+  summary_plot <- df2 %>%
+    ggplot2::ggplot(ggplot2::aes(.data$x_label, {{ y }})) +
     ggplot2::geom_boxplot() +
     ggplot2::theme_minimal()
 
