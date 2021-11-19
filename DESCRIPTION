@@ -1,12 +1,13 @@
 Package: statsummary
-Title: Compute summary statistics, produce a tibble or data frame and a boxplot
-Version: 0.0.0.9000
+Title: Compute summary statistics, produce a list object with two items: 
+    a tibble or data frame and a ggplot object- boxplot
+Version: 0.1.0
 Authors@R: 
     person(given = "Ekpereka",
            family = "Amutaigwe",
            role = c("aut", "cre"),
            email = "uzoamutaigwe@yahoo.com")
-Description: Computes summary statistics (mean, median, minimum, maximum, count) 
+Description: The summarize_data function computes summary statistics (mean, median, minimum, maximum, count) 
     on a numeric variable grouped by a categorical variable.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -18,8 +19,10 @@ Imports:
     gapminder,
     ggplot2,
     magrittr,
+    rlang,
     stats
 Suggests: 
     rmarkdown,
     knitr,
-    testthat (>= 3.0.4)
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
