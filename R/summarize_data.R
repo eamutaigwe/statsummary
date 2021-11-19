@@ -9,6 +9,7 @@
 #' @param x A categorical variable by which rows are grouped.
 #' @param y A numeric variable for computing summary statistics.
 #' @param na.rm Gives the option to either remove or retain missing values.
+#'
 #' @return A tibble or data frame containing summary statistics and a boxplot.
 #' @importFrom stats "median"
 #'
@@ -29,15 +30,19 @@ summarize_data <- function(df, x, y, na.rm = TRUE) {
          "You have provided a variable of class: ", class(val2))
   }
 
-  summary_df <- df %>%
+  df2 <- df %>%
     dplyr::group_by({{ x }}) %>%
+    dplyr::mutate(n = n()) %>%
+    dplyr::mutate(x_label = paste0({{ x }}, '\nN = ',n))
+
+  summary_df <- df2 %>%
     dplyr::summarise(mean = mean({{ y }}, na.rm = na.rm),
               median = stats::median({{ y }}, na.rm = na.rm),
               min = min({{ y }}, na.rm = na.rm),
               max = max({{ y }}, na.rm = na.rm),
               n = dplyr::n())
 
-  summary_plot <- df %>% ggplot2::ggplot(ggplot2::aes({{ x }}, {{ y }})) +
+  summary_plot <- df2 %>% ggplot2::ggplot(ggplot2::aes(x_label, {{ y }})) +
     ggplot2::geom_boxplot()
 
   return(list(summary_df, summary_plot))
