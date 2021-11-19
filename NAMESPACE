@@ -3,4 +3,5 @@
 export("%>%")
 export(summarize_data)
 importFrom(magrittr,"%>%")
-importFrom(stats,"median")
+importFrom(rlang,.data)
+importFrom(stats,median)
