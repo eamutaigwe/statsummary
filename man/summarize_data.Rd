@@ -2,29 +2,37 @@
 % Please edit documentation in R/summarize_data.R
 \name{summarize_data}
 \alias{summarize_data}
-\title{Compute summary statistics, produce a tibble or data frame and a boxplot}
+\title{Compute summary statistics, produce a tibble or data frame and a ggplot object- boxplot}
 \usage{
 summarize_data(df, x, y, na.rm = TRUE)
 }
 \arguments{
-\item{df}{Tibble or data frame containing variables for computing summary statistics.}
+\item{df}{Tibble or data frame containing variables for computing summary statistics.
+Name is easily recognizable.}
 
-\item{x}{A categorical variable by which rows are grouped.}
+\item{x}{A categorical variable by which rows are grouped.
+It is named x because it is more generally used and easy to identify.}
 
-\item{y}{A numeric variable for computing summary statistics.}
+\item{y}{A numeric variable for computing summary statistics.
+It is named y because it is more generally used and easy to identify.}
 
-\item{na.rm}{Gives the option to either remove or retain missing values.}
+\item{na.rm}{Gives the option to either remove or retain missing values.
+It is a generally used argument to specify whether or not to remove missing values.}
 }
 \value{
-A tibble or data frame containing summary statistics and a boxplot.
+A list object with 2 items: a tibble or data frame and a ggplot object- boxplot.
 }
 \description{
 This function computes summary statistics on a numeric variable
 grouped by a categorical variable. The summary statistics include
-mean, median, minimum, maximum, and count. It also
-produces a boxplot.
+mean, median, minimum, maximum, and count.
 }
 \examples{
 summarize_data(gapminder::gapminder, continent, lifeExp)
 summarize_data(gapminder::gapminder, country, gdpPercap)
+}
+\references{
+Syntax suggested on StackOverflow by Gabra
+https://stackoverflow.com/questions/40102613/ggplot2-adding-sample-size-information-to-x-axis-tick-labels
+https://dplyr.tidyverse.org/articles/programming.html
 }
