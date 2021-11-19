@@ -1,9 +1,9 @@
-#' Compute summary statistics, produce a tibble or data frame and a boxplot
+#' Compute summary statistics, produce a tibble or data frame and a ggplot2 boxplot
 #'
 #' This function computes summary statistics on a numeric variable
 #' grouped by a categorical variable. The summary statistics include
 #' mean, median, minimum, maximum, and count. It also
-#' produces a boxplot.
+#' produces a ggplot2 boxplot.
 #'
 #' @param df Tibble or data frame containing variables for computing summary statistics.
 #' @param x A categorical variable by which rows are grouped.
@@ -12,6 +12,11 @@
 #'
 #' @return A tibble or data frame containing summary statistics and a boxplot.
 #' @importFrom stats "median"
+#' @importFrom rlang .data
+#'
+#' @references Syntax suggested on StackOverflow by Gabra
+#' https://stackoverflow.com/questions/40102613/ggplot2-adding-sample-size-information-to-x-axis-tick-labels
+#' https://dplyr.tidyverse.org/articles/programming.html
 #'
 #' @examples
 #' summarize_data(gapminder::gapminder, continent, lifeExp)
@@ -32,8 +37,8 @@ summarize_data <- function(df, x, y, na.rm = TRUE) {
 
   df2 <- df %>%
     dplyr::group_by({{ x }}) %>%
-    dplyr::mutate(n = n()) %>%
-    dplyr::mutate(x_label = paste0({{ x }}, '\nN = ',n))
+    dplyr::mutate(var_count = dplyr::n()) %>%
+    dplyr::mutate(x_label = paste0({{ x }}, '\nN = ',.data$var_count))
 
   summary_df <- df2 %>%
     dplyr::summarise(mean = mean({{ y }}, na.rm = na.rm),
@@ -42,8 +47,9 @@ summarize_data <- function(df, x, y, na.rm = TRUE) {
               max = max({{ y }}, na.rm = na.rm),
               n = dplyr::n())
 
-  summary_plot <- df2 %>% ggplot2::ggplot(ggplot2::aes(x_label, {{ y }})) +
-    ggplot2::geom_boxplot()
+  summary_plot <- df2 %>% ggplot2::ggplot(ggplot2::aes(.data$x_label, {{ y }})) +
+    ggplot2::geom_boxplot() +
+    ggplot2::theme_minimal()
 
   return(list(summary_df, summary_plot))
 }
