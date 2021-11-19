@@ -32,7 +32,7 @@ devtools::install_github("eamutaigwe/statsummary")
 
 Summarize_data() is a function that helps to carry out a fairly common task on a dataset which quickly computes summary statistics (mean, median, minimum, maximum, and count) on a numeric variable grouped by a categorical variable.
 
-It also produces a ggplot object- boxplot which visually presents some of the summary statistics found in the summary table generated such as median, minimum, maximum, and count.
+It produces a list object with two items- a tibble or data frame containing summary statistics on a numeric variable grouped by a categorical variable, and a ggplot object- a boxplot which visually presents some of the summary statistics found in the summary table generated such as median, minimum, maximum, and count.
 
 Below is a basic example which shows you how to use the function:
 
