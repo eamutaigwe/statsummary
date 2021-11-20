@@ -41,3 +41,10 @@ library(statsummary)
 summarize_data(gapminder::gapminder, continent, lifeExp)
 ```
 
+
+summarize_data() is designed to always group by a categorical variable. So, if you decide to group by a numeric variable, it would throw an error. An error message is also returned if your `y` variable is categorical.
+
+```{r error=TRUE}
+summarize_data(gapminder::gapminder, gdpPercap, lifeExp)
+```
+

@@ -51,3 +51,14 @@ summarize_data(gapminder::gapminder, continent, lifeExp)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
+
+summarize_data() is designed to always group by a categorical variable.
+So, if you decide to group by a numeric variable, it would throw an
+error. An error message is also returned if your `y` variable is
+categorical.
+
+``` r
+summarize_data(gapminder::gapminder, gdpPercap, lifeExp)
+#> Error in summarize_data(gapminder::gapminder, gdpPercap, lifeExp): This function only works with a categorical input as x.
+#> You have provided an object of class: numeric
+```
