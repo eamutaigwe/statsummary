@@ -29,7 +29,7 @@ mean, median, minimum, maximum, and count.
 }
 \examples{
 summarize_data(gapminder::gapminder, continent, lifeExp)
-summarize_data(gapminder::gapminder, country, gdpPercap)
+summarize_data(datateachr::cancer_sample, diagnosis, perimeter_mean)
 }
 \references{
 Syntax suggested on StackOverflow by Gabra
