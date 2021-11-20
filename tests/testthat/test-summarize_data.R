@@ -10,11 +10,11 @@ test_that("the two means are identical", {
 })
 
 test_that("the function returns a list", {
-  expect_type(summarize_data(gapminder::gapminder, continent, lifeExp), "list")
+  expect_type(summarize_data(datateachr::apt_buildings, window_type, no_of_storeys), "list")
 })
 
 test_that("the use of a numeric variable for x returns an error", {
-  expect_error(summarize_data(gapminder::gapminder, pop, lifeExp))
+  expect_error(summarize_data(datateachr::cancer_sample, perimeter_mean, texture_mean))
 })
 
 test_that("the two mean vectors have NAs", {

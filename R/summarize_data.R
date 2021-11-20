@@ -23,7 +23,7 @@
 #'
 #' @examples
 #' summarize_data(gapminder::gapminder, continent, lifeExp)
-#' summarize_data(gapminder::gapminder, country, gdpPercap)
+#' summarize_data(datateachr::cancer_sample, diagnosis, perimeter_mean)
 #' @export
 
 summarize_data <- function(df, x, y, na.rm = TRUE) {
